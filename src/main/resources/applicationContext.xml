@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:contex="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context https://www.springframework.org/schema/context/spring-context.xsd">
+
+    <contex:property-placeholder location="classpath:MusicPlayer.properties"/>
+
+    <bean id="musicPlayer" class="org.solabaev.musicplayer.MusicPlayer">
+        <property name="musicList">
+        <list>
+            <bean id="classicMusic"
+                  class="org.solabaev.musicplayer.ClassicMusic">
+            </bean>
+
+            <bean id="rockMusic"
+                  class="org.solabaev.musicplayer.RockMusic">
+            </bean>
+
+            <bean id="metalMusic"
+                  class="org.solabaev.musicplayer.MetalMusic">
+            </bean>
+        </list>
+        </property>
+        <property name="name" value="${musicPlayer.name}"/>
+        <property name="volume" value="${musicPlayer.volume}"/>
+    </bean>
+
+</beans>
